@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "575339679893",
+    "firebase_url": "https://untitled-social-game.firebaseio.com",
+    "project_id": "untitled-social-game",
+    "storage_bucket": "untitled-social-game.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:575339679893:android:381ad5dc06aeee1f848b9c",
+        "android_client_info": {
+          "package_name": "com.gimbernat.UntitledSocialGame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "575339679893-r1tlpabrfgeb2hh1a82p1hu6vmuv5lcl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD10OaZ4R9xVDvzStV6wBp8xvPzOaXBbv8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "575339679893-r1tlpabrfgeb2hh1a82p1hu6vmuv5lcl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
