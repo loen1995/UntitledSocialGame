@@ -46,4 +46,9 @@ public class SessionDataSource {
         });
 
     }
+
+    public void resetWithEmail(final String email, final Callback callback)
+    {
+        callback.onSuccess(null);
+    }
 }

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">UntitledSocialGame</string>
+    <string name="title_activity_register_user">RegisterUserActivity</string>
 </resources>
