@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".scenes.boot.BootActivity">
+        <activity android:name=".scenes.map.MainMapActivity"></activity>
+        <activity android:name=".scenes.login.LoginActivity" />
+        <activity
+            android:name=".scenes.register.RegisterUserActivity"
+            android:label="@string/title_activity_register_user"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".scenes.boot.BootActivity" android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
