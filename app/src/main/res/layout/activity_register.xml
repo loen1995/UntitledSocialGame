@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Recuperar Password" />
+        android:text="@string/recuperar_password" />
 
     <EditText
         android:id="@+id/emailPassword"

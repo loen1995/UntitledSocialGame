@@ -29,10 +29,12 @@ public class SessionDataSource {
 
     public void SignIn(final Callback callback) {
         FirebaseAuth.getInstance().signOut();
+        /*FirebaseAuth.getInstance().signInWithEmailAndPassword("email","pass")*/
         FirebaseAuth.getInstance().signInAnonymously().addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
+                        /*ir a bbdd y crear*/
                     callback.onSuccess(FirebaseAuth.getInstance().getCurrentUser());
                 }else {
                     callback.onError();

@@ -23,6 +23,9 @@ public class BootActivity extends AppCompatActivity implements IBootActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_boot);
 
+       // this.navigateToPublic();
+
+
         if ( SessionDataSource.shared.isUserLogedIn()) {
             this.navigateToPrivate();
         } else {
