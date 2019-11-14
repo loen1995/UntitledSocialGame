@@ -8,6 +8,7 @@ import android.os.Bundle;
 import com.gimbernat.UntitledSocialGame.DataSources.SessionDataSource;
 import com.gimbernat.UntitledSocialGame.R;
 import com.gimbernat.UntitledSocialGame.scenes.login.LoginActivity;
+import com.gimbernat.UntitledSocialGame.scenes.map.GoogleMapsActivity;
 import com.gimbernat.UntitledSocialGame.scenes.map.MainMapActivity;
 
 
@@ -23,15 +24,15 @@ public class BootActivity extends AppCompatActivity implements IBootActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_boot);
 
-       // this.navigateToPublic();
+        this.navigateToPrivate();
 
-
+        /*
         if ( SessionDataSource.shared.isUserLogedIn()) {
             this.navigateToPrivate();
         } else {
             this.navigateToPublic();
         }
-
+        */
     }
 
     @Override
@@ -45,7 +46,7 @@ public class BootActivity extends AppCompatActivity implements IBootActivity {
     @Override
     public void navigateToPrivate() {
         // go to Map
-        Intent view = new Intent( BootActivity.this, MainMapActivity.class);
+        Intent view = new Intent( BootActivity.this, GoogleMapsActivity.class);
         view.setAction(Intent.ACTION_VIEW);
         startActivity(view);
     }

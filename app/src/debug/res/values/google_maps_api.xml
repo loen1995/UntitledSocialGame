@@ -1,0 +1,24 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=B5:85:9A:22:BF:ED:1E:CA:92:54:CF:89:5B:79:27:94:E9:86:00:98%3Bcom.gimbernat.UntitledSocialGame.scenes.map
+
+    You can also add your credentials to an existing key, using these values:
+
+    Package name:
+    B5:85:9A:22:BF:ED:1E:CA:92:54:CF:89:5B:79:27:94:E9:86:00:98
+
+    SHA-1 certificate fingerprint:
+    B5:85:9A:22:BF:ED:1E:CA:92:54:CF:89:5B:79:27:94:E9:86:00:98
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyCy4Rr63P_POMde3AGo_iJC6sFNJosDL3M</string>
+</resources>
