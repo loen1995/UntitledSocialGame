@@ -1,14 +1,21 @@
 package com.gimbernat.UntitledSocialGame.scenes.map;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
+
 import com.gimbernat.UntitledSocialGame.R;
 //Imports de localización
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -25,10 +32,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCallback {
-    
+
     //Variables
     private GoogleMap mMap;
     private Marker marcador;
+    private int GPS_PERMISSION_CODE = 1;
     double lat = 0.0;
     double lng = 0.0;
 
@@ -47,8 +55,56 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
     //Función que se activa cuando el mapa está preparado
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
+        //Comprobar los Permisos de GPS
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            //mMap.setMyLocationEnabled(true);
+            Toast.makeText(this, "Ya has aceptado los permisos", Toast.LENGTH_SHORT).show();
+        } else {
+            // Show rationale and request permission.
+            Toast.makeText(this, "No tienes permisos", Toast.LENGTH_SHORT).show();
+            requestGPSPermission();
+        }
         mMap = googleMap;
         miUbicacion();
+    }
+
+    private void requestGPSPermission() {
+        //Este metodo comprueba si ya le hemos pedido permisos al usuario
+        if(ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.ACCESS_FINE_LOCATION)){
+            new AlertDialog.Builder(this)
+                    .setTitle("Autorización de Permisos")
+                    .setMessage("Este permiso se necesita para acceder a la ubicación de tu dispositivo")
+                    //Botón de aceptar
+                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ActivityCompat.requestPermissions(GoogleMapsActivity.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, GPS_PERMISSION_CODE);
+                        }
+                    })
+                    //Boton denegar
+                    .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .create().show();
+        }else{
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, GPS_PERMISSION_CODE);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if(requestCode == GPS_PERMISSION_CODE){
+            if(grantResults.length > 0 && grantResults[0]==PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(this, "Permisos CONCEDIDOS", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(this, "Permisos DENEGADOS", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     public void agregarMarcador(double lat, double lng) {
