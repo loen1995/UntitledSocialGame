@@ -6,4 +6,3 @@ public interface Callback<Object> {
     void onError();
 
 }
-

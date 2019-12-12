@@ -9,6 +9,7 @@ import com.gimbernat.UntitledSocialGame.DataSources.SessionDataSource;
 import com.gimbernat.UntitledSocialGame.R;
 import com.gimbernat.UntitledSocialGame.scenes.login.LoginActivity;
 import com.gimbernat.UntitledSocialGame.scenes.map.MainMapActivity;
+import com.gimbernat.UntitledSocialGame.scenes.register.RegisterUserActivity;
 
 
 interface IBootActivity {
@@ -23,7 +24,8 @@ public class BootActivity extends AppCompatActivity implements IBootActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_boot);
 
-       // this.navigateToPublic();
+//        this.navigateToRegister();
+//        this.navigateToPublic();
 
 
         if ( SessionDataSource.shared.isUserLogedIn()) {
@@ -32,6 +34,14 @@ public class BootActivity extends AppCompatActivity implements IBootActivity {
             this.navigateToPublic();
         }
 
+    }
+
+
+    public void navigateToRegister() {
+        //go to Register User
+        Intent view = new Intent( BootActivity.this, RegisterUserActivity.class);
+        view.setAction(Intent.ACTION_VIEW);
+        startActivity(view);
     }
 
     @Override
