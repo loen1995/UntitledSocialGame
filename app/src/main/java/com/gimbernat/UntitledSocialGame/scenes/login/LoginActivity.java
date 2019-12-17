@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginActivity {
 
     @Override
     public void onError(String errorMessage) {
-
+        Toast.makeText(LoginActivity.this, errorMessage, Toast.LENGTH_LONG).show();
     }
 
     @Override

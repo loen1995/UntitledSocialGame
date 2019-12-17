@@ -17,7 +17,7 @@ public class LoginPresenter implements ILoginPresenter {
 
         this.view.showLoading();
 
-        SessionDataSource.shared.SignIn(new Callback() {
+        SessionDataSource.shared.signInEmailAndPassword(new Callback() {
             @Override
             public void onSuccess(Object responseObject) {
                 LoginPresenter.this.view.hideLoading();
@@ -27,7 +27,9 @@ public class LoginPresenter implements ILoginPresenter {
 
             @Override
             public void onError() {
+                LoginPresenter.this.view.onError("Error en el Login");
                 LoginPresenter.this.view.hideLoading();
+
             }
         });
     }
