@@ -25,14 +25,14 @@ public class BootActivity extends AppCompatActivity implements IBootActivity {
         setContentView(R.layout.activity_boot);
 
 //        this.navigateToRegister();
-//        this.navigateToPublic();
+        this.navigateToPrivate();
 
-
+/*
         if ( SessionDataSource.shared.isUserLogedIn()) {
             this.navigateToPrivate();
         } else {
             this.navigateToPublic();
-        }
+        }*/
 
     }
 
@@ -55,7 +55,7 @@ public class BootActivity extends AppCompatActivity implements IBootActivity {
     @Override
     public void navigateToPrivate() {
         // go to Map
-        Intent view = new Intent( BootActivity.this, MainMapActivity.class);
+        Intent view = new Intent( BootActivity.this, MainActivity.class);
         view.setAction(Intent.ACTION_VIEW);
         startActivity(view);
     }
