@@ -11,10 +11,18 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
+
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+
+    // Strings para el menú
+    <string name="menu_home">Mapa</string>
+    <string name="menu_miseventos">Mis Eventos</string>
+    <string name="menu_misgrupos">Mis Grupos</string>
+    <string name="menu_buscargrupo">Mis Eventos</string>
+    <string name="menu_perfil">Perfil</string>
+    <string name="menu_logout">Logout</string>
 </resources>
