@@ -56,10 +56,10 @@ public class SessionDataSource {
     }
 
 
-    public void signInEmailAndPassword(final Callback callback) {
+    public void signInEmailAndPassword(final String mail, final String pass, final Callback callback) {
         FirebaseAuth.getInstance().signOut();
 
-        FirebaseAuth.getInstance().signInWithEmailAndPassword("mou@mou.com","moumou").addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(mail,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
