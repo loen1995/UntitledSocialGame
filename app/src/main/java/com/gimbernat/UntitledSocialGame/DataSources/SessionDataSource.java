@@ -10,9 +10,12 @@ import com.gimbernat.UntitledSocialGame.Helpers.RegisterCallback;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SessionDataSource {
 
@@ -38,7 +41,29 @@ public class SessionDataSource {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                        /*ir a bbdd y crear*/
+                    callback.onSuccess(FirebaseAuth.getInstance().getCurrentUser());
+                }else {
+                    callback.onError();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                callback.onError();
+            }
+        });
+
+    }
+
+
+    public void signInEmailAndPassword(final String mail, final String pass, final Callback callback) {
+        FirebaseAuth.getInstance().signOut();
+
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(mail,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    /*ir a bbdd y crear*/
                     callback.onSuccess(FirebaseAuth.getInstance().getCurrentUser());
                 }else {
                     callback.onError();
