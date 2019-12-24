@@ -6,5 +6,8 @@ public interface ILoginActivity {
     void navigateToBootActivity();
     void showLoading();
     void hideLoading();
+    String getTextEmail();
+    String getPass();
+    void navigateToRegister();
 }
 
