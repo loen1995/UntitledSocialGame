@@ -8,6 +8,7 @@ import android.os.Bundle;
 import com.gimbernat.UntitledSocialGame.DataSources.SessionDataSource;
 import com.gimbernat.UntitledSocialGame.R;
 import com.gimbernat.UntitledSocialGame.scenes.login.LoginActivity;
+import com.gimbernat.UntitledSocialGame.scenes.map.GoogleMapsActivity;
 import com.gimbernat.UntitledSocialGame.scenes.map.MainMapActivity;
 import com.gimbernat.UntitledSocialGame.scenes.register.RegisterUserActivity;
 
@@ -27,15 +28,14 @@ public class BootActivity extends AppCompatActivity implements IBootActivity {
 //        this.navigateToRegister();
         this.navigateToPrivate();
 
-/*
+        /*
         if ( SessionDataSource.shared.isUserLogedIn()) {
             this.navigateToPrivate();
         } else {
             this.navigateToPublic();
-        }*/
-
+        }
+        */
     }
-
 
     public void navigateToRegister() {
         //go to Register User

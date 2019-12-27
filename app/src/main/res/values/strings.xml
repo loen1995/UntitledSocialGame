@@ -3,7 +3,11 @@
     <string name="title_activity_register_user">RegisterUserActivity</string>
     <string name="publicMain">Public</string>
     <string name="recuperar_password">Recuperar Password</string>
-  
+
+    //Mapa
+    <string name="title_activity_google_maps">Map</string>
+
+    //Main Activity
     <string name="title_activity_main">MainActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -26,6 +30,6 @@
     <string name="menu_buscargrupo">Mis Eventos</string>
     <string name="menu_perfil">Perfil</string>
     <string name="menu_logout">Logout</string>
-  
+
     <string name="login">Login</string>
 </resources>
