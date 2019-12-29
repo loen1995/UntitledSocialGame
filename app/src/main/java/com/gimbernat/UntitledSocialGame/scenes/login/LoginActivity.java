@@ -4,23 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.SyncStateContract;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.gimbernat.UntitledSocialGame.DataSources.SessionDataSource;
-import com.gimbernat.UntitledSocialGame.Helpers.Callback;
 import com.gimbernat.UntitledSocialGame.R;
 import com.gimbernat.UntitledSocialGame.scenes.boot.BootActivity;
 import com.gimbernat.UntitledSocialGame.scenes.login.interfaces.ILoginActivity;
-import com.gimbernat.UntitledSocialGame.scenes.map.MainMapActivity;
 import com.gimbernat.UntitledSocialGame.scenes.register.RegisterUserActivity;
-import com.gimbernat.UntitledSocialGame.scenes.register.interfaces.IRegisterUserActivity;
 
 public class LoginActivity extends AppCompatActivity implements ILoginActivity {
     // Presenter

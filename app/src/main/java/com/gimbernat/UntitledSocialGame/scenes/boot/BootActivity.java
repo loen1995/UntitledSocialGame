@@ -5,11 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.gimbernat.UntitledSocialGame.DataSources.SessionDataSource;
 import com.gimbernat.UntitledSocialGame.R;
 import com.gimbernat.UntitledSocialGame.scenes.login.LoginActivity;
-import com.gimbernat.UntitledSocialGame.scenes.map.GoogleMapsActivity;
-import com.gimbernat.UntitledSocialGame.scenes.map.MainMapActivity;
 import com.gimbernat.UntitledSocialGame.scenes.register.RegisterUserActivity;
 
 

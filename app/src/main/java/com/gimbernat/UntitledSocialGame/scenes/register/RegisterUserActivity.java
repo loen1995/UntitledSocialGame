@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.gimbernat.UntitledSocialGame.R;
-import com.gimbernat.UntitledSocialGame.scenes.map.MainMapActivity;
+import com.gimbernat.UntitledSocialGame.scenes.boot.MainActivity;
 import com.gimbernat.UntitledSocialGame.scenes.register.interfaces.IRegisterUserActivity;
 
 public class RegisterUserActivity extends AppCompatActivity implements IRegisterUserActivity {
@@ -91,7 +91,7 @@ public class RegisterUserActivity extends AppCompatActivity implements IRegister
     public void navigateToPrivate() {
 //        this.onError("Success");
         //TODO code the navigation to the login Activity using an Intent
-        Intent view = new Intent( RegisterUserActivity.this, MainMapActivity.class);
+        Intent view = new Intent( RegisterUserActivity.this, MainActivity.class);
         view.setAction(Intent.ACTION_VIEW);
         startActivity(view);
     }

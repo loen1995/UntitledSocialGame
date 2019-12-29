@@ -41,6 +41,7 @@ public class GMapFragment extends SupportMapFragment implements OnMapReadyCallba
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.setMyLocationEnabled(true);
     }
 
     private void agregarMarcador(double lat, double lng) {
@@ -57,6 +58,7 @@ public class GMapFragment extends SupportMapFragment implements OnMapReadyCallba
         mMap.animateCamera(miUbicacion);
     }
 
+    /*
     public void actualizarUbicacion(Location location) {
         //Si no hay ubicación, la pido
         if (location != null) {
@@ -65,7 +67,7 @@ public class GMapFragment extends SupportMapFragment implements OnMapReadyCallba
             agregarMarcador(lat, lng);
         }
     }
-
+*/
 
     //Fragment SIN ACTIVITY
     public View onCreateView(@NonNull LayoutInflater inflater,

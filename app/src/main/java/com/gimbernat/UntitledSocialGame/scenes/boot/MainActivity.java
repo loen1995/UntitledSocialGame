@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
         checkPermission();
-        miUbicacion();
+        //miUbicacion();
 
     }
 
@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    /*                          PARTE DE LOCALIZAR MAPS              */
+    /*
     LocationListener locListener = new LocationListener() {
         @Override
         public void onLocationChanged(Location location) {
@@ -159,6 +159,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+
     public void miUbicacion() {
         //Permisos obligatorios
         if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -172,6 +173,6 @@ public class MainActivity extends AppCompatActivity {
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,15000,0,locListener);
     }
 
-
+*/
 
 }
