@@ -49,6 +49,7 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
         //Obtiene el SupportMapFragment y recibe cuando el mapa esta preparado para usarse.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
+
         mapFragment.getMapAsync(this);
     }
 

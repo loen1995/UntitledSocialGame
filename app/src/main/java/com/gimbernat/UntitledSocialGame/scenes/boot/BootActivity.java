@@ -23,20 +23,19 @@ public class BootActivity extends AppCompatActivity implements IBootActivity {
         setContentView(R.layout.activity_boot);
 
 //        this.navigateToRegister();
-        this.navigateToPrivate();
+//        this.navigateToPrivate();
 
-        /*
-        if ( SessionDataSource.shared.isUserLogedIn()) {
+
+        if (SessionDataSource.shared.isUserLogedIn()) {
             this.navigateToPrivate();
         } else {
             this.navigateToPublic();
         }
-        */
     }
 
     public void navigateToRegister() {
         //go to Register User
-        Intent view = new Intent( BootActivity.this, RegisterUserActivity.class);
+        Intent view = new Intent(BootActivity.this, RegisterUserActivity.class);
         view.setAction(Intent.ACTION_VIEW);
         startActivity(view);
     }
@@ -44,7 +43,7 @@ public class BootActivity extends AppCompatActivity implements IBootActivity {
     @Override
     public void navigateToPublic() {
         //go to Login
-        Intent view = new Intent( BootActivity.this, LoginActivity.class);
+        Intent view = new Intent(BootActivity.this, LoginActivity.class);
         view.setAction(Intent.ACTION_VIEW);
         startActivity(view);
     }
@@ -52,7 +51,7 @@ public class BootActivity extends AppCompatActivity implements IBootActivity {
     @Override
     public void navigateToPrivate() {
         // go to Map
-        Intent view = new Intent( BootActivity.this, MainActivity.class);
+        Intent view = new Intent(BootActivity.this, MainActivity.class);
         view.setAction(Intent.ACTION_VIEW);
         startActivity(view);
     }
