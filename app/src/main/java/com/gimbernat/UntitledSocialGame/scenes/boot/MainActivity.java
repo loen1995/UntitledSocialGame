@@ -63,10 +63,7 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
-        checkPermission();
         //miUbicacion();
-
     }
 
     @Override
@@ -82,59 +79,6 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-
-
-    /*                           PARTE DE PERMISOS                         */
-    public void checkPermission(){
-        //Comprobar los Permisos de GPS
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
-            //mMap.setMyLocationEnabled(true);
-            Toast.makeText(this, "Ya has aceptado los permisos", Toast.LENGTH_SHORT).show();
-        } else {
-            // Show rationale and request permission.
-            Toast.makeText(this, "No tienes permisos", Toast.LENGTH_SHORT).show();
-            requestGPSPermission();
-        }
-    }
-
-    public void requestGPSPermission(){
-        //Este metodo comprueba si ya le hemos pedido permisos al usuario
-        if(ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.ACCESS_FINE_LOCATION)){
-            new AlertDialog.Builder(this)
-                    .setTitle("Autorización de Permisos")
-                    .setMessage("Este permiso se necesita para acceder a la ubicación de tu dispositivo")
-                    //Botón de aceptar
-                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, GPS_PERMISSION_CODE);
-                        }
-                    })
-                    //Boton denegar
-                    .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    })
-                    .create().show();
-        }else{
-            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, GPS_PERMISSION_CODE);
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if(requestCode == GPS_PERMISSION_CODE){
-            if(grantResults.length > 0 && grantResults[0]==PackageManager.PERMISSION_GRANTED){
-                Toast.makeText(this, "Permisos CONCEDIDOS", Toast.LENGTH_SHORT).show();
-            }else{
-                Toast.makeText(this, "Permisos DENEGADOS", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
 
     /*
     LocationListener locListener = new LocationListener() {
@@ -159,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-
     public void miUbicacion() {
         //Permisos obligatorios
         if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -172,7 +115,6 @@ public class MainActivity extends AppCompatActivity {
         //Pido actualización de la ubcación cada 15 seg
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,15000,0,locListener);
     }
-
 */
 
 }
