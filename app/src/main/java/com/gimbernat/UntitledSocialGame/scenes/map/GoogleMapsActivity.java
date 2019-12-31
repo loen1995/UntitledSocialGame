@@ -31,6 +31,14 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+
+/*
+ *
+ *      CÓDIGO OBSOLETO --> LA PARTE DE MAPAS AHORA SE HACE EN EL FRAGMENT DENTRO DE SCENES/BOOT/MAP/GMAPFRAGMENT
+ *
+ */
+
+
 public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     //Variables
