@@ -9,12 +9,12 @@
 
     <EditText
         android:id="@+id/emailPassword"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/recoverPassword"
@@ -26,8 +26,8 @@
 
     <EditText
         android:id="@+id/emailUser"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="306dp"
+        android:layout_height="100dp"
         android:layout_weight="1"
         android:ems="10"
         android:inputType="textEmailAddress"
@@ -35,7 +35,7 @@
 
     <EditText
         android:id="@+id/nicknameUser"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ems="10"
@@ -44,7 +44,7 @@
 
     <EditText
         android:id="@+id/passwordUser"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ems="10"
@@ -53,7 +53,7 @@
 
     <Button
         android:id="@+id/registerUser"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_weight="1"
         android:text="Registrarse" />
