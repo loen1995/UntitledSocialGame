@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.gimbernat.UntitledSocialGame.R;
 import com.gimbernat.UntitledSocialGame.scenes.boot.MainActivity;
+import com.gimbernat.UntitledSocialGame.scenes.login.LoginActivity;
 import com.gimbernat.UntitledSocialGame.scenes.register.interfaces.IRegisterUserActivity;
 
 public class RegisterUserActivity extends AppCompatActivity implements IRegisterUserActivity {
@@ -19,6 +20,7 @@ public class RegisterUserActivity extends AppCompatActivity implements IRegister
 
     Button forgotPasswordButton; //boton recuperar password
     Button registerButton;       //boton registrarse usuario
+    Button goToLogin;// botón ir a login
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -30,7 +32,7 @@ public class RegisterUserActivity extends AppCompatActivity implements IRegister
 
         //recuperar password
         //set button recoverPassword
-        this.forgotPasswordButton = this.findViewById(R.id.recoverPassword);
+        /*this.forgotPasswordButton = this.findViewById(R.id.recoverPassword);
 
         this.forgotPasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,7 +40,7 @@ public class RegisterUserActivity extends AppCompatActivity implements IRegister
                 RegisterUserActivity.this.onButtonPressed();
             }
         });
-
+        */
         //registrar usuario
         //set button registerUser
         this.registerButton = this.findViewById(R.id.registerUser);
@@ -50,6 +52,15 @@ public class RegisterUserActivity extends AppCompatActivity implements IRegister
             }
         });
 
+        // set button go to Lrogin
+        this.goToLogin = this.findViewById(R.id.goToLogin);
+
+        this.goToLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RegisterUserActivity.this.presenter.goToLogin();
+            }
+        });
     }
 
     private String getTextField()
@@ -104,5 +115,12 @@ public class RegisterUserActivity extends AppCompatActivity implements IRegister
     @Override
     public void hideLoading() {
 
+    }
+    @Override
+    public void goToLogin(){
+        //go to Register User
+        Intent view = new Intent(RegisterUserActivity.this, LoginActivity.class);
+        view.setAction(Intent.ACTION_VIEW);
+        startActivity(view);
     }
 }

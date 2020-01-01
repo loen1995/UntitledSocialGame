@@ -5,7 +5,9 @@
     <string name="recuperar_password">Recuperar Password</string>
     <string name="email">Email</string>
     <string name="irRegistro">Ir a Registro</string>
-
+    <string name="irLogin">Ir a Login</string>
+    <string name="registro">Registro</string>
+    <string name="password">Password</string>
     //Mapa
     <string name="title_activity_google_maps">Map</string>
 

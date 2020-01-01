@@ -6,6 +6,7 @@ public interface IRegisterUserActivity {
     void navigateToPrivate();
     void showLoading();
     void hideLoading();
+    void goToLogin();
 
     String getTextEmail();
     String getTextNicknameUser();

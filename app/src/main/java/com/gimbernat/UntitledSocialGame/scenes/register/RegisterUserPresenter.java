@@ -84,4 +84,8 @@ public class RegisterUserPresenter implements IRegisterUserPresenter {
         });
     }
 
+    @Override
+    public void goToLogin() {
+        RegisterUserPresenter.this.view.goToLogin();
+    }
 }
