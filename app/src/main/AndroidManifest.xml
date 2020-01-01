@@ -24,9 +24,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
         <activity
-            android:name=".scenes.map.GoogleMapsActivity"
-            android:label="@string/title_activity_google_maps"></activity>
-        <activity
             android:name=".scenes.boot.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar"></activity>
@@ -42,6 +39,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".scenes.events.CreateEventActivity" />
     </application>
 
 </manifest>

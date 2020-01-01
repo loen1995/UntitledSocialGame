@@ -15,6 +15,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.gimbernat.UntitledSocialGame.R;
 import com.gimbernat.UntitledSocialGame.scenes.boot.MainActivity;
@@ -31,20 +33,33 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 
-public class GMapFragment extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener {
+public class GMapFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener {
 
     private GoogleMap mMap;
     private Marker marcador;
     private FusedLocationProviderClient fusedLocationClient;
-    double lat;
-    double lng;
+    double lat=0;
+    double lng=0;
+    SupportMapFragment mapFragment;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        getMapAsync(this);
+        //View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        View v =  inflater.inflate(R.layout.fragment_gmap, container, false);
+        //getMapAsync(this);
+        mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.gmap);
+        if(mapFragment == null) {
+            FragmentManager fm = getFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            mapFragment = SupportMapFragment.newInstance();
+            ft.replace(R.id.gmap, mapFragment).commit();
+        }
+        mapFragment.getMapAsync(this);
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
-        return rootView;
+
+        //Toast.makeText(getActivity() , this.getId(), Toast.LENGTH_SHORT).show();
+        return v;
     }
+
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -65,11 +80,11 @@ public class GMapFragment extends SupportMapFragment implements OnMapReadyCallba
     @Override
     public void onMyLocationClick(@NonNull Location location) {
         //Toast.makeText(getActivity(), "Current location:\n" + location, Toast.LENGTH_LONG).show();
-        getLastLocation();
+        getLastLocation("null");
     }
 
     //Función para coger la última ubicación
-    public void getLastLocation(){
+    public double getLastLocation(String tipo){
         fusedLocationClient.getLastLocation()
                 .addOnSuccessListener(getActivity(), new OnSuccessListener<Location>() {
                     @Override
@@ -83,6 +98,16 @@ public class GMapFragment extends SupportMapFragment implements OnMapReadyCallba
                         }
                     }
                 });
+
+        if(tipo=="lat") {
+            return lat;
+        }else{
+            return lng;
+        }
+    }
+
+    public void hola(){
+        Toast.makeText(getActivity(), "HOLAAAAAAAAA", Toast.LENGTH_LONG).show();
     }
 
     private void agregarMarcador(double lat, double lng) {
