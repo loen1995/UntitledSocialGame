@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -11,6 +12,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -26,6 +28,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.gimbernat.UntitledSocialGame.R;
 import com.gimbernat.UntitledSocialGame.scenes.boot.ui.map.GMapFragment;
+import com.gimbernat.UntitledSocialGame.scenes.events.CreateEventActivity;
 import com.gimbernat.UntitledSocialGame.scenes.map.GoogleMapsActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -35,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private GMapFragment mapa;
+
+    FloatingActionButton goToCreateEvent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +67,23 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        //setear el boton de ir a crear evento
+        this.goToCreateEvent = this.findViewById(R.id.fab);
+        //evento que escucha cuando se hace click en el boton de ir a crear evento
+        this.goToCreateEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            MainActivity.this.goToCreateEvent();
+            }
+        });
+    }
+
+    public void goToCreateEvent(){
+        //go to Register User
+        Intent view = new Intent(MainActivity.this, CreateEventActivity.class);
+        view.setAction(Intent.ACTION_VIEW);
+        startActivity(view);
     }
 
     @Override
