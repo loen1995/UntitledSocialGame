@@ -39,8 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     public FragmentManager fm = getSupportFragmentManager();
-    //public GMapFragment fragment = (GMapFragment) fm.findFragmentById(R.id.gmap);
-    private GMapFragment fragment;
+    public GMapFragment fragment;
 
     FloatingActionButton goToCreateEvent;
 
@@ -48,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        fragment = (GMapFragment) fm.findFragmentById(R.id.nav_host_fragment).getChildFragmentManager().findFragmentById(R.id.gmap);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -77,6 +79,11 @@ public class MainActivity extends AppCompatActivity {
         this.goToCreateEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (MainActivity.this.fragment == null){
+                    Toast.makeText(MainActivity.this , "ES NULO", Toast.LENGTH_SHORT).show();
+                }
+
                 GMapFragment savedFragment = (GMapFragment) fm.findFragmentByTag("MAPA");
 
                 if (savedFragment == null) {
