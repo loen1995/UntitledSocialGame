@@ -8,6 +8,7 @@
     <string name="irLogin">Ir a Login</string>
     <string name="registro">Registro</string>
     <string name="password">Password</string>
+    <string name="nickname">Nickname</string>
     //Mapa
     <string name="title_activity_google_maps">Map</string>
 
