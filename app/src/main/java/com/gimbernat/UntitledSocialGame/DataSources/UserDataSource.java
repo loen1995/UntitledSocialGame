@@ -15,6 +15,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+import java.util.Map;
+
 interface IUserDataSource {
     void createUserWith(UserEntity user, GetUserCallback callback);
     void getUserData(GetUserCallback callback);
@@ -33,9 +36,10 @@ public class UserDataSource implements IUserDataSource {
 
 
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUserID());
+        Map<String, Object> eventUpdate = new HashMap<>();
+        eventUpdate.put("Nickname", user.getNickname());
 
-
-        mDatabase.child("Nickname").push().setValue(user.getNickname()).addOnCompleteListener(new OnCompleteListener<Void>() {
+        mDatabase.updateChildren(eventUpdate).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {

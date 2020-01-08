@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -30,6 +31,7 @@ public class SlideshowFragment extends Fragment {
                 textView.setText(s);
             }
         });
+        Toast.makeText(getActivity() , this.getId(), Toast.LENGTH_SHORT).show();
         return root;
     }
 }
