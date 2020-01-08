@@ -9,6 +9,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 interface IEventDataSource {
     void createEvent(String name,
                      String description,
@@ -28,11 +32,14 @@ public class EventDataSource implements IEventDataSource {
             final double longitude,
             final CreateEventCallback callback
     ) {
-        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("events").child(name);
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("events").child(UUID.randomUUID().toString());
+        Map<String, Object> eventUpdate = new HashMap<>();
+        eventUpdate.put("name", name);
+        eventUpdate.put("description", description);
+        eventUpdate.put("latitude", latitude);
+        eventUpdate.put("longitude", longitude);
 
-        mDatabase.child("description").push().setValue(description);
-        mDatabase.child("latitude").push().setValue(latitude);
-        mDatabase.child("longitude").push().setValue(longitude).addOnCompleteListener(new OnCompleteListener<Void>() {
+        mDatabase.updateChildren(eventUpdate).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {

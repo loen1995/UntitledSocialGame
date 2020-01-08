@@ -6,10 +6,10 @@ import com.gimbernat.UntitledSocialGame.scenes.events.interfaces.ICreateEventAct
 import com.gimbernat.UntitledSocialGame.scenes.events.interfaces.ICreateEventInteractor;
 import com.gimbernat.UntitledSocialGame.scenes.events.interfaces.ICreateEventPresenter;
 
-public class CreateEventPresenter implements ICreateEventPresenter {
+    public class CreateEventPresenter implements ICreateEventPresenter {
 
-    ICreateEventActivity view;
-    ICreateEventInteractor interactor;
+        ICreateEventActivity view;
+        ICreateEventInteractor interactor;
 
     public CreateEventPresenter(ICreateEventActivity view) {
         this.view = view;
