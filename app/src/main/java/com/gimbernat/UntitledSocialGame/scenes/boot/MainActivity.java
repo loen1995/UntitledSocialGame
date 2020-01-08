@@ -38,10 +38,6 @@ import com.google.android.material.snackbar.Snackbar;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    public FragmentManager fm = getSupportFragmentManager();
-    public GMapFragment fragment;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

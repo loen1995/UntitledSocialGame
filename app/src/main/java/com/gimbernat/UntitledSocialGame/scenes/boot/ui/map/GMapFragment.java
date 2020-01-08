@@ -43,10 +43,7 @@ public class GMapFragment extends Fragment implements OnMapReadyCallback, Google
     SupportMapFragment mapFragment;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        //View rootView = super.onCreateView(inflater, container, savedInstanceState);
         View view =  inflater.inflate(R.layout.fragment_gmap, container, false);
-        //getMapAsync(this);
-
         mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.gmap);
         if(mapFragment == null) {
             FragmentManager fm = getFragmentManager();
@@ -57,7 +54,6 @@ public class GMapFragment extends Fragment implements OnMapReadyCallback, Google
         mapFragment.getMapAsync(this);
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
 
-        //Toast.makeText(getActivity() , this.getId(), Toast.LENGTH_SHORT).show();
 
 
         this.goToCreateEvent = (FloatingActionButton) view.findViewById(R.id.fab);
@@ -69,6 +65,9 @@ public class GMapFragment extends Fragment implements OnMapReadyCallback, Google
             }
         });
 
+
+
+
         return view;
     }
 
@@ -79,25 +78,39 @@ public class GMapFragment extends Fragment implements OnMapReadyCallback, Google
         mMap.setMyLocationEnabled(true);
         mMap.setOnMyLocationButtonClickListener(this);
         mMap.setOnMyLocationClickListener(this);
+        mMap.setPadding(0, 100, 0, 0); //Sino, no se ve el centrar
+        //Animación para enfocar donde está la cámara
 
-        agregarMarcador(lat,lng);
+        fusedLocationClient.getLastLocation()
+                .addOnSuccessListener(getActivity(), new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        if (location != null) {
+                            //Toast.makeText(getActivity(), "Current location:\n" + location, Toast.LENGTH_LONG).show();
+                            GMapFragment.this.lat = location.getLatitude();
+                            GMapFragment.this.lng = location.getLongitude();
+                            LatLng coordenadas = new LatLng(GMapFragment.this.lat, GMapFragment.this.lng);
+                            CameraUpdate miUbicacion = CameraUpdateFactory.newLatLngZoom(coordenadas, 16); //Situo la cámara en las coordenadas
+                            mMap.animateCamera(miUbicacion);
+                        }
+                    }
+                });
+
+
     }
 
     //Botón centrar
     @Override
     public boolean onMyLocationButtonClick() {
-        Toast.makeText(getActivity() , "MyLocation button clicked", Toast.LENGTH_SHORT).show();
         return false;
     }
 
     //Indicador Ubicación
     @Override
     public void onMyLocationClick(@NonNull Location location) {
-        //Toast.makeText(getActivity(), "Current location:\n" + location, Toast.LENGTH_LONG).show();
-        //getLastLocation("null");
+
     }
 
-    //Función para coger la última ubicación
     private class MyPosition {
         double lat;
         double lng;
@@ -106,14 +119,14 @@ public class GMapFragment extends Fragment implements OnMapReadyCallback, Google
             this.lng = lng;
         }
     }
+    //Función para coger la última ubicación
     private void getLastLocation(final Callback callback){
         fusedLocationClient.getLastLocation()
                 .addOnSuccessListener(getActivity(), new OnSuccessListener<Location>() {
                     @Override
                     public void onSuccess(Location location) {
-                        //A veces tira null, pongo esto para control de errores
                         if (location != null) {
-                            Toast.makeText(getActivity(), "Current location:\n" + location, Toast.LENGTH_LONG).show();
+                            //Toast.makeText(getActivity(), "Current location:\n" + location, Toast.LENGTH_LONG).show();
                             GMapFragment.this.lat = location.getLatitude();
                             GMapFragment.this.lng = location.getLongitude();
                             //agregarMarcador(lat, lng);
@@ -126,7 +139,6 @@ public class GMapFragment extends Fragment implements OnMapReadyCallback, Google
 
     private void agregarMarcador(double lat, double lng) {
         LatLng coordenadas = new LatLng(lat, lng);
-        CameraUpdate miUbicacion = CameraUpdateFactory.newLatLngZoom(coordenadas, 16); //Situo la cámara en las coordenadas
         if (marcador != null) marcador.remove();
         //Creación del marcador
         marcador = mMap.addMarker(new MarkerOptions()
@@ -134,14 +146,11 @@ public class GMapFragment extends Fragment implements OnMapReadyCallback, Google
                         .title("Mi Posición Actual")
                 //.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher)) --> Esto no me acaba de ir pero es para poner un icono al marcador
         );
-        //Animación para enfocar donde está la cámara
-        mMap.animateCamera(miUbicacion);
+
     }
 
 
     public void goToCreateEvent(){
-        //go to Register User
-
 
         this.getLastLocation(new Callback() {
             @Override
