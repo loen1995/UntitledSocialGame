@@ -10,9 +10,11 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,12 +30,19 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.gimbernat.UntitledSocialGame.DataSources.SessionDataSource;
+import com.gimbernat.UntitledSocialGame.DataSources.UserDataSource;
+import com.gimbernat.UntitledSocialGame.Entities.UserEntity;
+import com.gimbernat.UntitledSocialGame.Helpers.Callback;
+import com.gimbernat.UntitledSocialGame.Helpers.GetUserCallback;
 import com.gimbernat.UntitledSocialGame.R;
 import com.gimbernat.UntitledSocialGame.scenes.boot.ui.map.GMapFragment;
 import com.gimbernat.UntitledSocialGame.scenes.events.CreateEventActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+
+import javax.sql.DataSource;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -59,12 +68,32 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        //setContentView(R.layout.nav_header_main);
+
+        //Asigno el nombre y email en el menú
+
+        UserDataSource.shared.getUserData(new GetUserCallback() {
+            @Override
+            public void onSuccess(UserEntity user) {
+                TextView namenav = (TextView) findViewById(R.id.nameNav);
+                namenav.setText(user.getNickname());
+            }
+
+            @Override
+            public void onError(String error) {
+                TextView namenav = (TextView) findViewById(R.id.nameNav);
+                namenav.setText(error);
+            }
+        });
+
         return true;
     }
 

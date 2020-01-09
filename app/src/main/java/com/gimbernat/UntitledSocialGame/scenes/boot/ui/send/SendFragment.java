@@ -1,5 +1,6 @@
 package com.gimbernat.UntitledSocialGame.scenes.boot.ui.send;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.gimbernat.UntitledSocialGame.R;
+import com.gimbernat.UntitledSocialGame.scenes.boot.BootActivity;
 
 public class SendFragment extends Fragment {
 
@@ -30,6 +32,10 @@ public class SendFragment extends Fragment {
                 textView.setText(s);
             }
         });
+
+        Intent view = new Intent(SendFragment.this.getActivity(), BootActivity.class);
+        view.setAction(Intent.ACTION_VIEW);
+        startActivity(view);
         return root;
     }
 }
