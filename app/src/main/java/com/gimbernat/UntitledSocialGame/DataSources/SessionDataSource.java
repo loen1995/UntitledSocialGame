@@ -6,6 +6,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.gimbernat.UntitledSocialGame.Helpers.Callback;
+import com.gimbernat.UntitledSocialGame.Helpers.GetUserCallback;
 import com.gimbernat.UntitledSocialGame.Helpers.RegisterCallback;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -16,6 +17,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import org.w3c.dom.Entity;
 
 public class SessionDataSource {
 
