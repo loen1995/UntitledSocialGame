@@ -85,9 +85,6 @@ public class GMapFragment extends Fragment implements OnMapReadyCallback, Google
         mMap.setMyLocationEnabled(true);
         mMap.setOnMyLocationButtonClickListener(this);
         mMap.setOnMyLocationClickListener(this);
-        mMap.setPadding(0, 100, 0, 0); //Sino, no se ve el centrar
-        //Animación para enfocar donde está la cámara
-
         fusedLocationClient.getLastLocation()
                 .addOnSuccessListener(getActivity(), new OnSuccessListener<Location>() {
                     @Override
@@ -103,8 +100,6 @@ public class GMapFragment extends Fragment implements OnMapReadyCallback, Google
                     }
                 });
 
-
-        //VAMOS A PROBAR A PINTAR
         EventDataSource.shared.fetchAll(new Callback() {
             @Override
             public void onSuccess(Object responseObject) {
@@ -126,9 +121,6 @@ public class GMapFragment extends Fragment implements OnMapReadyCallback, Google
 
             }
         });
-
-
-
     }
 
     //Botón centrar
@@ -140,7 +132,6 @@ public class GMapFragment extends Fragment implements OnMapReadyCallback, Google
     //Indicador Ubicación
     @Override
     public void onMyLocationClick(@NonNull Location location) {
-
     }
 
     private class MyPosition {
@@ -196,7 +187,6 @@ public class GMapFragment extends Fragment implements OnMapReadyCallback, Google
 
             @Override
             public void onError() {
-
             }
         });
     }

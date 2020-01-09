@@ -73,21 +73,9 @@ public class CreateEventActivity extends AppCompatActivity implements ICreateEve
 
     }
 
-    public void setLatEvent(String newValue)
-    {
-        final EditText textField = CreateEventActivity.this.findViewById(R.id.ubicationLatitude);
-        textField.setText(newValue);
-    }
-
     public double getLongEvent()
     {
         return LNG;
-    }
-
-    public void setLongEvent(String newValue)
-    {
-        final EditText textField = CreateEventActivity.this.findViewById(R.id.ubicationLongitude);
-        textField.setText(newValue);
     }
 
     @Override

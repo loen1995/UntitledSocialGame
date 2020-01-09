@@ -28,7 +28,9 @@
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar"
             android:noHistory="true"></activity>
-        <activity android:name=".scenes.login.LoginActivity" android:noHistory="true"/>
+        <activity android:name=".scenes.login.LoginActivity"
+            android:screenOrientation="portrait"
+            android:noHistory="true"/>
         <activity
             android:name=".scenes.register.RegisterUserActivity"
             android:label="@string/title_activity_register_user"
