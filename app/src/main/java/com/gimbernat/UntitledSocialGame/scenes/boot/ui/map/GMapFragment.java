@@ -3,6 +3,8 @@ package com.gimbernat.UntitledSocialGame.scenes.boot.ui.map;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
+import android.telecom.Call;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.gimbernat.UntitledSocialGame.DataSources.EventDataSource;
+import com.gimbernat.UntitledSocialGame.Entities.EventEntity;
 import com.gimbernat.UntitledSocialGame.Helpers.Callback;
 import com.gimbernat.UntitledSocialGame.R;
 import com.gimbernat.UntitledSocialGame.scenes.events.CreateEventActivity;
@@ -30,17 +34,20 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 
 public class GMapFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener {
 
     FloatingActionButton goToCreateEvent;
 
     private GoogleMap mMap;
-    private Marker marcador;
     private FusedLocationProviderClient fusedLocationClient;
     double lat=30;
     double lng=30;
     SupportMapFragment mapFragment;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_gmap, container, false);
@@ -97,6 +104,31 @@ public class GMapFragment extends Fragment implements OnMapReadyCallback, Google
                 });
 
 
+        //VAMOS A PROBAR A PINTAR
+        EventDataSource.shared.fetchAll(new Callback() {
+            @Override
+            public void onSuccess(Object responseObject) {
+                ArrayList<EventEntity> events = (ArrayList<EventEntity>) responseObject;
+                Iterator<EventEntity> it = events.iterator();
+                mMap.clear();
+
+                while(it.hasNext()){
+                    EventEntity event = it.next();
+                    System.out.println(event.toString());
+                    System.out.println("Latitud: " + event.latitude);
+                    agregarMarcador(event.latitude,event.longitude,event.name);
+                }
+            }
+
+            @Override
+            public void onError() {
+                Log.d("debug", "error");
+
+            }
+        });
+
+
+
     }
 
     //Botón centrar
@@ -137,13 +169,11 @@ public class GMapFragment extends Fragment implements OnMapReadyCallback, Google
     }
 
 
-    private void agregarMarcador(double lat, double lng) {
+    private void agregarMarcador(double lat, double lng, String title) {
         LatLng coordenadas = new LatLng(lat, lng);
-        if (marcador != null) marcador.remove();
-        //Creación del marcador
-        marcador = mMap.addMarker(new MarkerOptions()
+        mMap.addMarker(new MarkerOptions()
                         .position(coordenadas)
-                        .title("Mi Posición Actual")
+                        .title(title)
                 //.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher)) --> Esto no me acaba de ir pero es para poner un icono al marcador
         );
 
