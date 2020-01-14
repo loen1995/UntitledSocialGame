@@ -50,7 +50,6 @@ public class LoginActivity extends AppCompatActivity implements ILoginActivity {
         this.hideLoading();
     }
 
-
     public String getTextEmail()
     {
         final EditText textField = LoginActivity.this.findViewById(R.id.emailLogin);
@@ -81,6 +80,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginActivity {
         view.setAction(Intent.ACTION_VIEW);
         startActivity(view);
     }
+
     @Override
     public void showLoading() {
 

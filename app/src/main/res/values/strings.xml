@@ -9,6 +9,12 @@
     <string name="registro">Registro</string>
     <string name="password">Password</string>
     <string name="nickname">Nickname</string>
+    <string name="event_name">Nombre evento</string>
+    <string name="event_desc">Descripción evento</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="event_create">Crear Evento</string>
+
+
     //Mapa
     <string name="title_activity_google_maps">Map</string>
 
