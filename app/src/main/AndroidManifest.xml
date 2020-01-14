@@ -34,7 +34,7 @@
         <activity
             android:name=".scenes.register.RegisterUserActivity"
             android:label="@string/title_activity_register_user"
-            android:theme="@style/AppTheme.NoActionBar" />
+            />
         <activity android:name=".scenes.boot.BootActivity" android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,7 +42,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".scenes.events.CreateEventActivity" />
+        <activity android:name=".scenes.events.CreateEventActivity"
+            />
     </application>
 
 </manifest>

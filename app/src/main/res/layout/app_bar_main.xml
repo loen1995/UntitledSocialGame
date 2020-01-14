@@ -23,6 +23,7 @@
         android:background="?attr/colorPrimary"
         app:layout_anchor="@+id/appBarLayout"
         app:layout_anchorGravity="center"
-        app:popupTheme="@style/AppTheme.PopupOverlay" />
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:titleTextColor="@color/colorWhite"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
