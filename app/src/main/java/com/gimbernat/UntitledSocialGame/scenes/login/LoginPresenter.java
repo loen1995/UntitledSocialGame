@@ -22,20 +22,25 @@ public class LoginPresenter implements ILoginPresenter {
 
         String pass = LoginPresenter.this.view.getPass();
         String mail = LoginPresenter.this.view.getTextEmail();
-        SessionDataSource.shared.signInEmailAndPassword(mail,pass, new Callback() {
-            @Override
-            public void onSuccess(Object responseObject) {
-                LoginPresenter.this.view.hideLoading();
+        if (pass.isEmpty()|| mail.isEmpty()){
+            LoginPresenter.this.view.onError("Obligatorio rellenar todos los campos.");
+            LoginPresenter.this.view.hideLoading();
+        }else {
+            SessionDataSource.shared.signInEmailAndPassword(mail, pass, new Callback() {
+                @Override
+                public void onSuccess(Object responseObject) {
+                    LoginPresenter.this.view.hideLoading();
 
-                LoginPresenter.this.view.navigateToBootActivity();
-            }
+                    LoginPresenter.this.view.navigateToBootActivity();
+                }
 
-            @Override
-            public void onError() {
-                LoginPresenter.this.view.onError("Error en el Login");
-                LoginPresenter.this.view.hideLoading();
-            }
-        });
+                @Override
+                public void onError() {
+                    LoginPresenter.this.view.onError("Error en el Login");
+                    LoginPresenter.this.view.hideLoading();
+                }
+            });
+        }
     }
 
     public void setGoToRegistry() {
