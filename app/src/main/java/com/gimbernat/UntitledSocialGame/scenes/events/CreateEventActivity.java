@@ -26,8 +26,6 @@ import com.google.android.gms.maps.SupportMapFragment;
 public class CreateEventActivity extends AppCompatActivity implements ICreateEventActivity {
 
     private CreateEventPresenter presenter;
-    public FragmentManager fm = getSupportFragmentManager();
-    public GMapFragment fragment = (GMapFragment) fm.findFragmentByTag("MAPA");
     public static String K_PARAM_LAT = "PARAM_LAT";
     public static String K_PARAM_LNG = "PARAM_LNG";
     private  Double LNG;
@@ -71,30 +69,13 @@ public class CreateEventActivity extends AppCompatActivity implements ICreateEve
 
     public double getLatEvent()
     {
-        /*
-        final EditText textField = CreateEventActivity.this.findViewById(R.id.ubicationLatitude);
-        return textField.getText().toString();
-         */
-        //Toast.makeText(this, "LATITUD = \n" + fragment.getLastLocation("lat"), Toast.LENGTH_LONG).show();
         return LAT;
 
-    }
-
-    public void setLatEvent(String newValue)
-    {
-        final EditText textField = CreateEventActivity.this.findViewById(R.id.ubicationLatitude);
-        textField.setText(newValue);
     }
 
     public double getLongEvent()
     {
         return LNG;
-    }
-
-    public void setLongEvent(String newValue)
-    {
-        final EditText textField = CreateEventActivity.this.findViewById(R.id.ubicationLongitude);
-        textField.setText(newValue);
     }
 
     @Override

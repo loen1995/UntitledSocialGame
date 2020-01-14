@@ -16,13 +16,6 @@
 
     <include layout="@layout/content_main" />
 
-    <RadioButton
-        android:id="@+id/goToCreateEvent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|start"
-        android:text="Añadir Evento" />
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"

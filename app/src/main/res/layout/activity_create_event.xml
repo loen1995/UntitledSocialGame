@@ -26,23 +26,6 @@
         android:inputType="text"
         android:text="Descripción evento" />
 
-    <EditText
-        android:id="@+id/ubicationLatitude"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
-        android:inputType="text"
-        android:text="altitud" />
-
-    <EditText
-        android:id="@+id/ubicationLongitude"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
-        android:inputType="text"
-        android:text="longitud" />
 
     <Button
         android:id="@+id/createEvent"
