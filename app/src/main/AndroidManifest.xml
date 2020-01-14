@@ -43,6 +43,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".scenes.events.CreateEventActivity"
+            android:label="@string/event_create"
             />
     </application>
 
