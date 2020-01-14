@@ -31,7 +31,10 @@ public class CreateEventActivity extends AppCompatActivity implements ICreateEve
     private  Double LNG;
     private  Double LAT;
 
+
     Button createEventButton;       //boton crear evento
+    Button returnToMap;         // boton para volver al mapa
+
     protected void onCreate (Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -51,6 +54,14 @@ public class CreateEventActivity extends AppCompatActivity implements ICreateEve
             }
         });
 
+        this.returnToMap = this.findViewById(R.id.goToMap);
+
+        this.returnToMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CreateEventActivity.this.navigateToPrivate();
+            }
+        });
 
     }
 

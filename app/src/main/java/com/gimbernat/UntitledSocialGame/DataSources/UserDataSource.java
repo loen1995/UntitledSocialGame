@@ -33,8 +33,6 @@ public class UserDataSource implements IUserDataSource {
     @Override
     public void createUserWith(final UserEntity user, final GetUserCallback callback)
     {
-
-
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUserID());
         Map<String, Object> eventUpdate = new HashMap<>();
         eventUpdate.put("Nickname", user.getNickname());
